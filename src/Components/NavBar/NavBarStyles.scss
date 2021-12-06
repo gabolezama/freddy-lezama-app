@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&display=swap');
+.NavBar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: burlywood;
+    border: 1px solid black;
+    height: 4rem;
+    #titleApp{
+        padding-top: 10px;
+        font-family: 'Corinthia', cursive;
+        font-size: 2.5rem;
+        &:hover{
+            transform: scale(1.5);
+        }
+    }
+    .link{
+        padding: 0px 10px;
+        height: 3rem;
+        background-color: cornsilk;
+        font-family: 'Corinthia', cursive;
+        border-radius: 50%;
+        &:hover{
+            background-color: greenyellow;
+        }
+    }
+    a{
+        font-size: 2rem;
+        font-weight: 7;
+        text-decoration: none;
+        color: black;
+        margin-bottom: 20px;
+    }
+    #logoCafe{
+        width: 4rem;
+        height: 2.5rem;
+        border-radius: 30%;
+        &:hover{
+            transform: scale(1.5);
+        }
+    }
+    .cartWidget{
+        display: flex;
+        flex-direction: row;
+        height: 2.5rem;
+        .contador{
+            padding: 10px 0 0 20px;
+            font-weight: 500
+        }
+    }
+}
