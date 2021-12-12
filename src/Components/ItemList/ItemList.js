@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Item from "./Item";
 
-function ItemList() {
+function ItemList(props) {
+    const { onAdd } = props;
+
   const [catalogo, setCatalogo] = useState([]);
 
   const task = new Promise((resolve) => {
@@ -21,10 +23,14 @@ function ItemList() {
   });
   console.log(catalogo);
 
-  return (
-    catalogo.map((item, index) => {
-        return ( <Item key={index} id={item.id} title={item.title} price={item.price}/>);
-      })
+  return (   
+        <div className='row justify-content-center'>
+            {
+                catalogo.map((item, index) => {
+                return ( <Item key={index} id={item.id} title={item.title} price={item.price} onAdd={ ()=>onAdd()}/>);
+                })
+            }
+        </div>
   );
 }
 

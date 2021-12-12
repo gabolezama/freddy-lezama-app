@@ -8,10 +8,7 @@ function ItemListContainer(props){
     
     return(
         <>
-           <ItemList/>
-           <ItemCount key={1} myId={1} stock={0} initial={1} onAdd={(data)=> onAdd(data)}/>
-           <ItemCount key={2} myId={2} stock={8} initial={2} onAdd={(data)=> onAdd(data)}/>
-           <ItemCount key={3} myId={3} stock={0} initial={5} onAdd={(data)=> onAdd(data)}/>
+           <ItemList onAdd={()=> onAdd()}/>
         </>
     )
 }
