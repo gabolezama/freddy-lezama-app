@@ -1,0 +1,40 @@
+.ItemCount{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    max-width: 200px;
+    padding: 10px 0px 10px 15px;
+    border-radius: 10px;
+    background-color: burlywood;
+
+    .counter{
+        width: 50%;
+        input{
+            text-align: center;
+            font-weight: 500;
+        }
+    }
+    input{
+        width: 95%;
+        padding: 0;
+    }
+    .button-mas{
+        max-width: 2.5rem;
+        margin-left: 12px;
+        height: 30px;
+    }
+    .button-menos{
+        max-width: 2.5rem;
+        margin-left: 14px;
+        height: 30px;
+    }
+    .btn-verde{
+        font-size: .7rem;
+        width: 4rem;
+        margin-left: 10px;
+        .carritoMas{
+            width: 80%;
+        }
+    }
+}

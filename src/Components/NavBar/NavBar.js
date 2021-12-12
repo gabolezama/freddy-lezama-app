@@ -3,8 +3,8 @@ import CartWidget from "./CartWidget";
 import '../NavBar/NavBarStyles.css';
 import cafe from '../../assets/img/cafe.jpg'
 
-
-function NavBar(){
+function NavBar(props){
+    const { itemsQty }=props;
     const categorias = ['Café', 'Infusiones', 'Pastelería', 'Tragos', 'Socios'];
     
     return(
@@ -21,7 +21,7 @@ function NavBar(){
                     )
                 })
             }
-            <CartWidget/>
+            <CartWidget itemsQty={ itemsQty } />
         </nav>
     )
 }
