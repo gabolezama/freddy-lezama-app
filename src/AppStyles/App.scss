@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&display=swap');
 
-.itemList{
-    color: hotpink;
-    font-family: 'Corinthia', cursive;
-    font-size: 5rem;
+.card{
+    margin: 10px;
+    width: 18rem;
+    border-radius: 10px;
+
+    #imgCard{
+        height: 12rem;
+        width: 90%;
+        margin: 10px;
+        border: 1px solid lightgrey;
+        border-radius: 20px;
+    }
 }
