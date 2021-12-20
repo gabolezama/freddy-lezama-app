@@ -14,14 +14,13 @@ function ItemList(props) {
 
   const task = new Promise((resolve) => {
     setTimeout(() => {
-      catalogo.length === 0 &&
         resolve([
-          { id: 1, title: "Café Colombiano", price: 1000, img: colombiano, stock: 5, initial: 1 },
-          { id: 2, title: "Café Brasileño", price: 500, img: brasilero, stock: 0, initial: 3 },
-          { id: 3, title: "Café Peruano", price: 800, img: peruano, stock: 8, initial: 2 },
-          { id: 4, title: "Café Venezolano", price: 300, img: venezolano, stock: 0, initial: 5},
-          { id: 5, title: "Café Mexicano", price: 500, img: mexicano, stock: 4, initial: 1},
-          { id: 6, title: "Café Francés", price: 900, img: frances, stock: 9, initial: 2}
+          { id: 1, country: 'colombia' , title: "Café Colombiano", price: 1000, img: colombiano, stock: 5, initial: 1, rating: [5,5,5] },
+          { id: 2, country: 'brazil', title: "Café Brasileño", price: 500, img: brasilero, stock: 0, initial: 3, rating: [3,2,4] },
+          { id: 3, country: 'peru', title: "Café Peruano", price: 800, img: peruano, stock: 8, initial: 2, rating: [4,4,3] },
+          { id: 4, country: 'venezuela', title: "Café Venezolano", price: 300, img: venezolano, stock: 0, initial: 5, rating: [5,4,4]},
+          { id: 5, country: 'mexico', title: "Café Mexicano", price: 500, img: mexicano, stock: 4, initial: 1, rating: [3,2,2]},
+          { id: 6, country: 'france', title: "Café Francés", price: 900, img: frances, stock: 9, initial: 2, rating: [4,4,4]}
         ]);
     }, 2000);
   });
@@ -35,7 +34,7 @@ function ItemList(props) {
         <div className='row justify-content-center'>
         {
             catalogo.map((item, index) => {
-            return (<Item key={index} id={item.id} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} onAdd={()=>onAdd()}/>);
+            return (<Item key={index} id={item.id} country={item.country} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} rating={item.rating} onAdd={()=>onAdd()}/>);
             })
         }
         </div>

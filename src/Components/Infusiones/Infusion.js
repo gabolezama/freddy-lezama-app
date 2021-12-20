@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 
-function Item(props) {
+function Infusion(props) {
   const { id, country, title, price, stock, initial, img, rating, onAdd } = props;
 
   return (
@@ -21,4 +21,4 @@ function Item(props) {
   );
 }
 
-export default Item;
+export default Infusion;
