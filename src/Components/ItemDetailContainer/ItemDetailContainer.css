@@ -2,9 +2,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
   color: rosybrown;
   margin: 10px;
   width: 99%;
@@ -18,11 +15,39 @@
   border-radius: 10px;
 }
 
-.detailContainer .container {
+.detailContainer #banderaDetail {
+  margin: 20px 5px;
+  border-radius: 10%;
+}
+
+.detailContainer .col {
   margin: 10px;
 }
 
-.detailContainer .container #banderaDetail {
-  border-radius: 10%;
+.detailContainer .purchaseControl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.detailContainer #purchaseEnd {
+  margin: 20px 10px 10px 0px;
+}
+
+.detailContainer #purchaseEndBadge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2rem;
 }
 /*# sourceMappingURL=ItemDetailContainer.css.map */

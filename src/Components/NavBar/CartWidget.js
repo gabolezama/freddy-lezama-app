@@ -1,5 +1,4 @@
 import './NavBarStyles.css';
-import ItemCount from '../ItemCount/ItemCount';
 
 function CartWidget( props ){
     

@@ -4,12 +4,9 @@ import { useState } from 'react'
 
 function ItemCount(props) {
 
-  const { myId,
-          stock,
-          initial,
-          onAdd} = props;
+  const { myId, stock, initial, onAdd} = props;
   
-  const [ counter, setCounter ] = useState(initial === undefined || initial === null? 0 : initial)
+  const [ counter, setCounter ] = useState(initial === undefined || initial === null? 0 : parseInt(initial))
 
   const increase = ()=>{
     setCounter( counter >= stock? stock : counter + 1 )

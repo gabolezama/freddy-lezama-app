@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import CartWidget from "./CartWidget";
 import '../NavBar/NavBarStyles.css';
 import cafe from '../../assets/img/cafe.jpg'
 import { Link, NavLink } from "react-router-dom";
 
-function NavBar(props){
-    const { itemsQty }=props;
+function NavBar(){
+    const [itemsQty, setItemQty ] = useState(0)
     const categorias = ['Café', 'Infusiones', 'Pasteleria'];
+
+    window.addEventListener('agregarItem', (evt)=>{
+        console.log(evt);
+    })
     
     return(
         <nav className='NavBar'>
