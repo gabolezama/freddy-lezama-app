@@ -10,7 +10,7 @@ function Item(props) {
   return (
     <div className="card">
       <img id='imgCard' src={img} className="card-img-top" alt="juan-valdez" />
-      <NavLink className='itemNavLink' to={ stock === 0 ? '/home' : `/ItemDetail/${country}/${id}/${rating}`}><button type="button" className={stock !== 0 ? "btn btn-success" : "btn btn-secondary"}> Más Info </button></NavLink>
+      <NavLink className='itemNavLink' to={ stock === 0 ? '/' : `/ItemDetail/${country}/${id}/${rating}`}><button type="button" className={stock !== 0 ? "btn btn-success" : "btn btn-secondary"}> Más Info </button></NavLink>
 
       <div className="card-body">
         <h5 className="card-title">{title}</h5>

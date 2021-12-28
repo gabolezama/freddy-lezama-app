@@ -7,6 +7,7 @@ import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailCont
 import Infusiones from './Components/Infusiones/Infusiones';
 import Pasteleria from './Components/Pasteleria/Pasteleria';
 import Cart from './Components/Cart/Cart';
+import { ContextProvider } from './Components/CartContext/CartContext';
 
 function App() {
 
@@ -20,17 +21,19 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar/>
-      <Routes>
-        <Route exact path='/home' element={ <Home/>}/>
-        <Route exact path='/Café' element={ <Home/>}/>
-        <Route exact path='/Infusiones' element={ <Infusiones/>}/>
-        <Route exact path='/Pasteleria' element={ <Pasteleria/>}/>
-        <Route exact path={`/ItemDetail/:country/:id/:rating`} element={ <ItemDetailContainer/>}/>
-        <Route exact path={`/cart`} element={ <Cart/>}/>
-      </Routes>
-    </BrowserRouter>
+    <ContextProvider>
+      <BrowserRouter>
+        <NavBar/>
+          <Routes>
+            <Route exact path='/' element={ <Home/>}/>
+            <Route exact path='/Café' element={ <Home/>}/>
+            <Route exact path='/Infusiones' element={ <Infusiones/>}/>
+            <Route exact path='/Pasteleria' element={ <Pasteleria/>}/>
+            <Route exact path={`/ItemDetail/:country/:id/:rating`} element={ <ItemDetailContainer/>}/>
+            <Route exact path={`/cart`} element={ <Cart/>}/>
+          </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 

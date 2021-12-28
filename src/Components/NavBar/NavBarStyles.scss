@@ -43,9 +43,20 @@
         display: flex;
         flex-direction: row;
         height: 2.5rem;
+        border: 1px solid black;
+        border-radius: 20px;
+        background-color: cornsilk;
         .contador{
             padding: 10px 0 0 20px;
             font-weight: 500
         }
+    }
+    .btn-reset{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        font-size: 1rem;
+        border-radius: 20px;
     }
 }

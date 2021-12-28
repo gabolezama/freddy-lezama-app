@@ -64,10 +64,28 @@
       -ms-flex-direction: row;
           flex-direction: row;
   height: 2.5rem;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: cornsilk;
 }
 
 .NavBar .cartWidget .contador {
   padding: 10px 0 0 20px;
   font-weight: 500;
+}
+
+.NavBar .btn-reset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+  font-size: 1rem;
+  border-radius: 20px;
 }
 /*# sourceMappingURL=NavBarStyles.css.map */

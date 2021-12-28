@@ -18,11 +18,9 @@ function ItemDetailContainer(){
        getCountryInfo().then(res => setCountryData(res[0]))
     }, [])
 
-    console.log('CD', countryData);
-
     return(
         <div className='detailContainer'>
-          <ItemDetail id={id} bandera={ countryData?.flags?.png } region={ countryData?.subregion } name={country} rating={rating}/>
+          <ItemDetail id={id} bandera={ countryData?.flags?.png } region={ countryData?.subregion } name={country} rating={rating} />
         </div>
     )
 }

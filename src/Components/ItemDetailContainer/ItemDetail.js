@@ -1,19 +1,30 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import ItemCount from '../ItemCount/ItemCount'
+import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
+import ItemCount from '../ItemCount/ItemCount';
+import { CartContext } from "../CartContext/CartContext";
+import { useEffect } from "react/cjs/react.development";
 
 function ItemDetail(props) {
   const { id, bandera, name, region, rating } = props;
-  const starNum = rating.split(',')
 
   const [ added, setAdded ] = useState(true)
+
+  const { cart, addItem, deleteItem }= useContext(CartContext)
+
+  const starNum = rating.split(',')
   const evtAgregar = new CustomEvent('agregarItem',{bubbles: true})
 
-  const onAdd = (id) =>{
-    console.log('id', id)
-    setAdded(false)
-    window.dispatchEvent(evtAgregar)
-  }
+  useEffect(()=>{
+    console.log('cart');
+    const showAdded = cart.find((item)=>{
+      return item.producto === parseInt(id)
+    })
+
+    setAdded(showAdded === undefined ? true : showAdded.added)
+  }, [ cart ])
+
+  const onAdd = (id, qty) =>{ qty !== 0 && addItem( parseInt(id), qty, false ) }
+  const unDoAdd = () =>{ deleteItem(parseInt(id)) }
 
   return (
     <div className="row">
@@ -65,10 +76,15 @@ function ItemDetail(props) {
         <p>Cantidad Inicial: {starNum[4]}</p>
         <p>Unidades Disponibles: {starNum[3]}</p>
         {
-          added ? <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id) => onAdd(id)}/>
-          :       <span id="purchaseEndBadge" class="badge bg-secondary">Este producto ya se agregó al carrito</span>
+          added === undefined || added === true ? 
+          <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id, qty) => onAdd(id, qty)}/>
+          :
+          <span id="purchaseEndBadge" className="badge bg-secondary">Este producto ya se agregó al carrito</span>
         }
-        <NavLink id="purchaseEnd" to={'/cart'}><button type="button" class="btn btn-success">Terminar mi Compra</button></NavLink>
+        <div className="col">
+          <NavLink id="purchaseEnd" to={'/cart'}><button type="button" className="btn btn-success">Terminar mi Compra</button></NavLink>
+          <button type="button" class="btn btn-danger" onClick={()=> unDoAdd() }>Deshacer Agregar</button>
+        </div>
       </div>
     </div>
   );

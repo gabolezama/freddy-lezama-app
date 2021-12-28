@@ -41,7 +41,7 @@ function ItemCount(props) {
             type="button"
             disabled={!stock}
             className="col btn btn-success btn-verde"
-            onClick={() => onAdd(myId)}
+            onClick={() => onAdd(myId, counter)}
           >
             Agregar
             <img className="carritoMas" src={carritoMas}></img>
