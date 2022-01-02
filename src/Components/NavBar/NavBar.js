@@ -9,7 +9,7 @@ function NavBar(){
     const [itemsQty, setItemQty ] = useState(0)
     const categorias = ['Café', 'Infusiones', 'Pasteleria'];
     
-    const { cart, cntProducto } = useContext( CartContext )
+    const { cntProducto } = useContext( CartContext )
     
     useEffect(()=>{
         setItemQty( cntProducto )
@@ -28,7 +28,7 @@ function NavBar(){
                     )
                 })
             }
-            <CartWidget itemsQty={ itemsQty } />
+            {cntProducto ? <CartWidget itemsQty={ itemsQty } />: <div></div>}
         </nav>
     )
 }

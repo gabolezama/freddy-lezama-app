@@ -14,7 +14,7 @@ function ItemDetail(props) {
   const evtAgregar = new CustomEvent('agregarItem',{bubbles: true})
 
   useEffect(()=>{
-    console.log('cart');
+
     const showAdded = cart.find((item)=>{
       return item.producto === parseInt(id)
     })
@@ -23,7 +23,6 @@ function ItemDetail(props) {
   }, [ cart ])
 
   const onAdd = (id, qty) =>{ qty !== 0 && addItem( parseInt(id), qty, false ) }
-  const unDoAdd = () =>{ deleteItem(parseInt(id)) }
 
   return (
     <div className="row">
@@ -82,7 +81,6 @@ function ItemDetail(props) {
         }
         <div className="col">
           <NavLink id="purchaseEnd" to={'/cart'}><button type="button" className="btn btn-success">Terminar mi Compra</button></NavLink>
-          <button type="button" class="btn btn-danger" onClick={()=> unDoAdd() }>Deshacer Agregar</button>
         </div>
       </div>
     </div>

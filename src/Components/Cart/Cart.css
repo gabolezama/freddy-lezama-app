@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia&display=swap");
+.listContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.listContainer .addedItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Corinthia';
+  font-size: 3rem;
+}
+
+.listContainer .addedItem img {
+  margin: 10px;
+  border-radius: 50px;
+  width: 20%;
+  height: 5rem;
+}
+
+.listContainer .addedItem .name {
+  width: 30%;
+}
+
+.listContainer .addedItem .qty {
+  padding: 0%;
+  width: 10%;
+}
+
+.listContainer .addedItem button {
+  border-radius: 20px;
+  font-size: 2rem;
+  margin: 0%;
+}
+
+.listContainer .addedItem .acum {
+  margin-left: 4%;
+}
+
+.failMessage {
+  margin: 20px;
+  font-family: 'Corinthia';
+  font-size: 3rem;
+}
+
+.failMessage .failNav {
+  text-decoration: none;
+  color: black;
+}
+/*# sourceMappingURL=Cart.css.map */

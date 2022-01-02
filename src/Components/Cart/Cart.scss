@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&display=swap');
+
+.listContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .addedItem{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-family: 'Corinthia';
+            font-size: 3rem;
+
+            img{
+                margin: 10px;
+                border-radius: 50px;
+                width: 20%;
+                height: 5rem;
+            }
+            .name{
+                width: 30%;
+            }
+            .qty{
+                padding: 0%;
+                width: 10%;
+            }
+            button{
+                border-radius: 20px;
+                font-size: 2rem;
+                margin: 0%;
+            }
+            .acum{
+                margin-left: 4%;
+            }
+    }
+}
+.failMessage{
+    margin: 20px;
+    font-family: 'Corinthia';
+    font-size: 3rem;
+    .failNav{
+        text-decoration: none;
+        color: black;
+    }
+}

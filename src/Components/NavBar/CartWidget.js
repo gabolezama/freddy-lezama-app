@@ -15,7 +15,7 @@ function CartWidget( props ){
     return(
         <div className='cartWidget'>
             <img id='imgCart' src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/000000/external-shopping-cart-ecommerce-kiranshastry-solid-kiranshastry.png"/>
-            <p className='contador'>{ itemsQty }</p>
+            <p className='contador'>{ itemsQty ?? '' }</p>
             <button type="button" class="btn btn-warning btn-reset" onClick={()=> resetCart()}>Resetear</button>
         </div>
     )
