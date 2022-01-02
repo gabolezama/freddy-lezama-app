@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Item from "./Item";
 import brasilero from "../../assets/img/cafe-brasil.jpg";
 import peruano from "../../assets/img/cafe-peruano.jpg";
@@ -7,12 +7,17 @@ import colombiano from "../../assets/img/juan-valdez.jpg";
 import mexicano from "../../assets/img/cafe-mexicano.jpg";
 import frances from "../../assets/img/cafe-frances.jpg";
 import { useEffect } from "react/cjs/react.development";
+import { CartContext } from "../CartContext/CartContext";
 
-function ItemList(props) {
+function ItemList() {
 
   const [catalogo, setCatalogo] = useState([]);
 
+  const { setLoader } = useContext(CartContext)
+
+  
   const task = new Promise((resolve) => {
+    setLoader(true)
     setTimeout(() => {
         resolve([
           { id: 1, country: 'colombia' , title: "Café Colombiano", price: 1000, img: colombiano, stock: 5, initial: 1, rating: [5,5,5] },
@@ -22,14 +27,19 @@ function ItemList(props) {
           { id: 5, country: 'mexico', title: "Café Mexicano", price: 500, img: mexicano, stock: 4, initial: 1, rating: [3,2,2]},
           { id: 6, country: 'france', title: "Café Francés", price: 900, img: frances, stock: 9, initial: 2, rating: [4,4,4]}
         ]);
-    }, 1000);
+    }, 5000);
   });
+
   useEffect(()=>{
     task.then((res) => {
       setCatalogo(res);
+      
     });
   }, [])
+
   console.log(catalogo);
+
+  catalogo.length > 0 && setLoader(false)
 
   return (   
         <div className='row justify-content-center'>

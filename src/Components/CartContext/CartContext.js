@@ -1,9 +1,10 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 export const CartContext = createContext();
 
 export const ContextProvider = ({children}) => {
 
     const [cart, setCart] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [cntProducto, setCntProducto] = useState(0);
 
     const addItem = (producto, quantity, set) => {
@@ -30,10 +31,13 @@ export const ContextProvider = ({children}) => {
         setCntProducto( cart.length === 0 ? 0 : cntProducto - (eliminado?.quantity?? 0))
         setCart(quitoItem);
     };
+
     const clearAll = () =>{ setCart([]); setCntProducto(0)}
     console.log(cart);
 
-    return (<CartContext.Provider value={{ cart, cntProducto, addItem, clearAll, deleteItem }}>
+    const setLoader = (setting) =>{ setLoading(setting); }
+
+    return (<CartContext.Provider value={{ cart, cntProducto, loading, addItem, clearAll, deleteItem, setLoader }}>
         {children}
     </CartContext.Provider>
     );

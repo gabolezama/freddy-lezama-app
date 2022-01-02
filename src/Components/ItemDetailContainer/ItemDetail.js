@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from "../CartContext/CartContext";
-import { useEffect } from "react/cjs/react.development";
 
 function ItemDetail(props) {
   const { id, bandera, name, region, rating } = props;

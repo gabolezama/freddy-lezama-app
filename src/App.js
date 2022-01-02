@@ -1,13 +1,15 @@
 import './AppStyles/App.css';
 import NavBar from './Components/NavBar/NavBar';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import Infusiones from './Components/Infusiones/Infusiones';
 import Pasteleria from './Components/Pasteleria/Pasteleria';
 import Cart from './Components/Cart/Cart';
 import { ContextProvider } from './Components/CartContext/CartContext';
+import Loader from './Components/Loader/Loader';
+import FloatingButton from './Components/FloatingButton/FloatingButton';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
     <ContextProvider>
       <BrowserRouter>
         <NavBar/>
+        <Loader/>
+        <FloatingButton/>
           <Routes>
             <Route exact path='/' element={ <Home/>}/>
             <Route exact path='/Café' element={ <Home/>}/>
