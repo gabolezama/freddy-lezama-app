@@ -19,7 +19,7 @@ function Cart(){
                         return (
                             
                                 <div class="listContainer">
-                                    <div class="row addedItem" style={{ backgroundColor: index % 2 === 0 ? 'lightseagreen' : 'lightgreen' }}>
+                                    <div class="addedItem" style={{ backgroundColor: index % 2 === 0 ? 'lightseagreen' : 'lightgreen' }}>
                                         <img class="listImg" src={`${element.img}`} />
                                         <div class="name">{element.name}</div>
                                         <div class="qty">{element.quantity}</div>
