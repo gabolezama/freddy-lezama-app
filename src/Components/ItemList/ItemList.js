@@ -1,38 +1,28 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Item from "./Item";
-import { useEffect } from "react/cjs/react.development";
 import { CartContext } from "../CartContext/CartContext";
 
 function ItemList() {
 
   const [catalogo, setCatalogo] = useState([]);
 
-  const { setLoader, arrayCafe } = useContext(CartContext)
+  const { setLoader, setArray, arrayCafe } = useContext(CartContext)
 
+  setLoader(true)
   
-  const task = new Promise((resolve) => {
-    setLoader(true)
-    setTimeout(() => {
-        resolve( arrayCafe );
-    }, 5000);
-  });
-
   useEffect(()=>{
-    task.then((res) => {
-      setCatalogo(res);
-      
-    });
-  }, [])
+    setArray('cafe')
+    setCatalogo(arrayCafe)
+  }, [arrayCafe])
 
   console.log(catalogo);
-
   catalogo.length > 0 && setLoader(false)
 
   return (   
         <div className='row justify-content-center'>
         {
-            catalogo.map((item, index) => {
-            return (<Item key={index} id={item.id} country={item.country} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} rating={item.rating}/>);
+            Array.isArray(catalogo) && catalogo.length > 0 && catalogo.map((item, index) => {
+            return (<Item key={index} id={item.productId} country={item.country} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} rating={item.rating}/>);
             })
         }
         </div>

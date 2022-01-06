@@ -7,21 +7,14 @@ function Infusiones (){
 
 const [catalogoInfusiones, setCatalogoInfusiones ] = useState([])
 
-const { arrayInfusion, setLoader } = useContext(CartContext)
+const { setLoader, setArray, arrayInfusion } = useContext(CartContext)
 
-
-const task = new Promise((resolve) => {
   setLoader(true)
-    setTimeout(() => {
-        resolve( arrayInfusion );
-    }, 5000);
-  });
-
+  
   useEffect(()=>{
-    task.then((res) => {
-      setCatalogoInfusiones(res);
-    });
-  },[])
+    setArray('infusiones')
+    setCatalogoInfusiones(arrayInfusion)
+  },[arrayInfusion])
 
   console.log(catalogoInfusiones);
 
@@ -31,7 +24,7 @@ const task = new Promise((resolve) => {
         <div className='row justify-content-center'>
         {
             catalogoInfusiones.map((item, index) => {
-            return (<Infusion key={index} id={item.id} country={item.country} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} rating={item.rating}/>);
+            return (<Infusion key={index} id={item.productId} country={item.country} title={item.title} price={item.price} stock={item.stock} initial={item.initial} img={item.img} rating={item.rating}/>);
             })
         }
         </div>

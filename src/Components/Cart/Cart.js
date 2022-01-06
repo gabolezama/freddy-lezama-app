@@ -14,7 +14,7 @@ function Cart(){
             {
                 cart.length > 0 ?
                     cart.map((element, index) => {
-                        acumulative += element.quantity
+                        acumulative += parseInt(element.quantity)
 
                         return (
                             
