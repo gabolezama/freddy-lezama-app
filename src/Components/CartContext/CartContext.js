@@ -66,7 +66,7 @@ export const ContextProvider = ({children}) => {
     };
 
     const deleteItem = (id) => {
-        console.log(id, cart);
+        console.log('Elimino: ', id);
 
         const eliminado = cart.find((item)=> item.producto === id )
 
@@ -77,7 +77,7 @@ export const ContextProvider = ({children}) => {
     };
 
     const clearAll = () =>{ setCart([]); setCntProducto(0)}
-    console.log(cart);
+    console.log('Cart', cart);
 
     const setLoader = (setting) =>{ setLoading(setting); }
 

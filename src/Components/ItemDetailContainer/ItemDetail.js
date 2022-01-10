@@ -22,7 +22,7 @@ function ItemDetail(props) {
     setAdded(showAdded === undefined ? true : showAdded.added)
   }, [ cart ])
 
-  const onAdd = (id, qty) =>{ qty !== 0 && addItem( parseInt(id), qty, false ) }
+  const onAdd = (id, qty) =>{ qty !== 0 && addItem( parseInt(id), parseInt(qty), false ) }
 
   return (
     <div className="row">
@@ -79,9 +79,6 @@ function ItemDetail(props) {
           :
           <span id="purchaseEndBadge" className="badge bg-secondary">Este producto ya se agregó al carrito</span>
         }
-        <div className="col">
-          <NavLink id="purchaseEnd" to={'/cart'}><button type="button" className="btn btn-success">Terminar mi Compra</button></NavLink>
-        </div>
       </div>
     </div>
   );

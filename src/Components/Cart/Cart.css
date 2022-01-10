@@ -49,6 +49,7 @@
 
 .listContainer .addedItem .acum {
   margin-left: 4%;
+  width: 10%;
 }
 
 .failMessage {

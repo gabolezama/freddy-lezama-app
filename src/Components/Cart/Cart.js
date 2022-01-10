@@ -39,6 +39,7 @@ function Cart(){
                         <div class="listImg">Total Acumulado: </div>
                         <div class="name"></div>
                         <div class="acum">{acumulative}</div>
+                    <NavLink id="purchaseEnd" to={'/cart'}><button type="button" className="btn btn-success">Terminar mi Compra</button></NavLink>
                     </div> 
                 </div>
             }

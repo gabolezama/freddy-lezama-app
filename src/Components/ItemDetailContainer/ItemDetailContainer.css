@@ -34,10 +34,6 @@
           flex-direction: column;
 }
 
-.detailContainer #purchaseEnd {
-  margin: 20px 10px 10px 0px;
-}
-
 .detailContainer #purchaseEndBadge {
   display: -webkit-box;
   display: -ms-flexbox;
