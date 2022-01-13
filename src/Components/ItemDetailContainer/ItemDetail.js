@@ -1,14 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from "../CartContext/CartContext";
 
 function ItemDetail(props) {
-  const { id, bandera, name, region, rating } = props;
+  const { id, bandera, name, region, rating, price } = props;
 
   const [ added, setAdded ] = useState(true)
 
-  const { cart, addItem, deleteItem }= useContext(CartContext)
+  const { cart, addItem }= useContext(CartContext)
 
   const starNum = rating.split(',')
   const evtAgregar = new CustomEvent('agregarItem',{bubbles: true})
@@ -22,7 +21,7 @@ function ItemDetail(props) {
     setAdded(showAdded === undefined ? true : showAdded.added)
   }, [ cart ])
 
-  const onAdd = (id, qty) =>{ qty !== 0 && addItem( parseInt(id), parseInt(qty), false ) }
+  const onAdd = (id, qty, stock) =>{ qty !== 0 && addItem( parseInt(id), parseInt(qty), parseInt(stock), parseInt(price), false ) }
 
   return (
     <div className="row">
@@ -75,7 +74,7 @@ function ItemDetail(props) {
         <p>Unidades Disponibles: {starNum[3]}</p>
         {
           added === undefined || added === true ? 
-          <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id, qty) => onAdd(id, qty)}/>
+          <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id, qty, stock) => onAdd(id, qty, stock)}/>
           :
           <span id="purchaseEndBadge" className="badge bg-secondary">Este producto ya se agregó al carrito</span>
         }

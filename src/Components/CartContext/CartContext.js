@@ -29,15 +29,14 @@ export const ContextProvider = ({children}) => {
 
     }, [tag])
 
-  const addItem = (producto, quantity, set) => {
+  const addItem = (producto, quantity, stock, price, set) => {
 
       if (quantity !== 0 || quantity !== undefined) {
         setCntProducto(cntProducto + quantity);
         const existe = cart.find((itemCart) => itemCart.producto === producto);
 
         if (existe) {
-          const updateCntProd = existe.quantity + quantity;
-          existe.quantity = updateCntProd;
+          existe.quantity += quantity;          
           setCart(cart);
 
         } else {
@@ -58,7 +57,9 @@ export const ContextProvider = ({children}) => {
               name: name,
               img: foto,
               quantity: quantity,
-              added: set,
+              stock: stock,
+              price: price,
+              added: set
             },
           ]);
         }

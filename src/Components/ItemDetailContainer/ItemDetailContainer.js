@@ -4,7 +4,7 @@ import '../ItemDetailContainer/ItemDetailContainer.css'
 import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer(){
-    const { country, id, rating } = useParams();
+    const { country, id, rating, price } = useParams();
 
     const [ countryData, setCountryData] = useState([])
 
@@ -20,7 +20,7 @@ function ItemDetailContainer(){
 
     return(
         <div className='detailContainer'>
-          <ItemDetail id={id} bandera={ countryData?.flags?.png } region={ countryData?.subregion } name={country} rating={rating} />
+          <ItemDetail id={id} bandera={ countryData?.flags?.png } region={ countryData?.subregion } name={country} rating={rating} price={price} />
         </div>
     )
 }

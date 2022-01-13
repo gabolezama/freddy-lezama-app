@@ -33,7 +33,7 @@ function App() {
             <Route exact path='/Café' element={ <Home/>}/>
             <Route exact path='/Infusiones' element={ <Infusiones/>}/>
             <Route exact path='/Pasteleria' element={ <Pasteleria/>}/>
-            <Route exact path={`/ItemDetail/:country/:id/:rating`} element={ <ItemDetailContainer/>}/>
+            <Route exact path={`/ItemDetail/:country/:id/:rating/:price`} element={ <ItemDetailContainer/>}/>
             <Route exact path={`/cart`} element={ <Cart/>}/>
           </Routes>
       </BrowserRouter>
