@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore"
 
 export const CartContext = createContext();
 
@@ -8,6 +8,8 @@ export const ContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(false);
     const [cntProducto, setCntProducto] = useState(0);
+    const [purchaseOrder, setPurchaseOrder] = useState({})
+    const [orderId, setOrderId] = useState()
 
     const [arrayCafe, setArrayCafe] = useState([]) 
     const [arrayInfusion, setArrayInfusion] = useState([]) 
@@ -26,9 +28,21 @@ export const ContextProvider = ({children}) => {
             setArrayInfusion(snapshot.docs.map((doc)=> ({ ...doc.data()} )));
         }) 
       }
-
-    }, [tag])
-
+      
+      Object.values(purchaseOrder).length > 0 && finalizePurchase()
+      
+    }, [tag, purchaseOrder])
+    
+    function finalizePurchase(){
+      console.log(purchaseOrder);
+      const db = getFirestore();
+      const ordersCollection = collection(db, 'orders')
+      addDoc( ordersCollection, purchaseOrder).then(({ id }) => setOrderId(id))
+      alert(`Su compra se generó con exito!!, el ID de su compra es: ${orderId}`)
+      setPurchaseOrder({})
+      clearAll()
+  }
+  
   const addItem = (producto, quantity, stock, price, set) => {
 
       if (quantity !== 0 || quantity !== undefined) {
@@ -77,6 +91,17 @@ export const ContextProvider = ({children}) => {
         setCart(quitoItem);
     };
 
+    const generatePurchase = ( personalData, totalPrice ) =>{
+      setPurchaseOrder({
+        buyer:{
+          ...personalData
+        },
+        items: cart,
+        total: totalPrice
+      })
+      
+    }
+
     const clearAll = () =>{ setCart([]); setCntProducto(0)}
     console.log('Cart', cart);
 
@@ -97,6 +122,7 @@ export const ContextProvider = ({children}) => {
           deleteItem,
           setLoader,
           setArray,
+          generatePurchase
         }}
       >
         {children}

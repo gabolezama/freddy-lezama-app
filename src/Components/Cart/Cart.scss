@@ -55,12 +55,20 @@
     
     .purchaseModal{
         position: absolute;
+        padding: 20px;
         z-index: 40;
-        width: 80%;
-        height: 80vh;
+        width: 40%;
         top: 10%;
-        left: 10%;
+        left: 30%;
         border-radius: 30px;
         background-color: rgba(226, 235, 148, 0.9);
+
+        .modalButtons{
+            display: flex;
+            justify-content: flex-end;
+            .cancelar{
+                margin-right: 20px;
+            }
+        }
     }
 }

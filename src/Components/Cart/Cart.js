@@ -75,7 +75,7 @@ function Cart(){
                 </div>
             }
             {
-                showModal && <PurchaseModal showModal={ (change) => onChangeOpenModal(change) }/>
+                (showModal && cart.length > 0) && <PurchaseModal totalPrice={acumulativePrice} showModal={ (change) => onChangeOpenModal(change) }/>
             }
         </div>
     )
