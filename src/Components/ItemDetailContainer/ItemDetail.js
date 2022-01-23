@@ -4,12 +4,13 @@ import { CartContext } from "../CartContext/CartContext";
 
 function ItemDetail(props) {
   const { id, bandera, name, region, rating, price } = props;
+  const starNum = rating.split(',')
 
   const [ added, setAdded ] = useState(true)
+  const [ newStock, setNewStock ] = useState( starNum[3] )
 
   const { cart, addItem }= useContext(CartContext)
 
-  const starNum = rating.split(',')
   const evtAgregar = new CustomEvent('agregarItem',{bubbles: true})
 
   useEffect(()=>{
@@ -21,7 +22,11 @@ function ItemDetail(props) {
     setAdded(showAdded === undefined ? true : showAdded.added)
   }, [ cart ])
 
-  const onAdd = (id, qty, stock) =>{ qty !== 0 && addItem( parseInt(id), parseInt(qty), parseInt(stock), parseInt(price), false ) }
+  const onAdd = (id, qty) =>{ 
+    setNewStock( starNum[3] - parseInt(qty))
+    let stock = starNum[3] - parseInt(qty)
+    qty !== 0 && addItem( parseInt(id), parseInt(qty), stock, parseInt(price), false ) 
+  }
 
   return (
     <div className="row">
@@ -71,10 +76,10 @@ function ItemDetail(props) {
       <div className="col purchaseControl">
         <h1>Controles de Compra:</h1>
         <p>Cantidad Inicial: {starNum[4]}</p>
-        <p>Unidades Disponibles: {starNum[3]}</p>
+        <p>Unidades Disponibles: {newStock}</p>
         {
           added === undefined || added === true ? 
-          <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id, qty, stock) => onAdd(id, qty, stock)}/>
+          <ItemCount myId={id} initial={starNum[4]} stock={starNum[3]} onAdd={(id, qty, stock) => onAdd(id, qty)}/>
           :
           <span id="purchaseEndBadge" className="badge bg-secondary">Este producto ya se agregó al carrito</span>
         }

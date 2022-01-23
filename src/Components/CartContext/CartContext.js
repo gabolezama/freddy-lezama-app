@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { addDoc, collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore"
+import { addDoc, collection, getDoc, doc, getDocs, getFirestore, updateDoc } from "firebase/firestore"
 
 export const CartContext = createContext();
 
@@ -12,35 +12,72 @@ export const ContextProvider = ({children}) => {
     const [orderId, setOrderId] = useState()
 
     const [arrayCafe, setArrayCafe] = useState([]) 
-    const [arrayInfusion, setArrayInfusion] = useState([]) 
-    const [tag, setTag] = useState(null) 
+    const [arrayInfusion, setArrayInfusion] = useState([])
 
     useEffect(()=>{
-      const db = getFirestore();
-      if (tag === "cafe") {
-        const itemsCollection = collection(db, "items");
-        getDocs(itemsCollection).then((snapshot) => {
-          setArrayCafe(snapshot.docs.map((doc) => ({ ...doc.data() })));
-        });
-      }else{
-        const infusionesCollection = collection(db, 'infusiones')
-        getDocs( infusionesCollection ).then((snapshot) => {
-            setArrayInfusion(snapshot.docs.map((doc)=> ({ ...doc.data()} )));
-        }) 
-      }
       
       Object.values(purchaseOrder).length > 0 && finalizePurchase()
-      
-    }, [tag, purchaseOrder])
+    }, [purchaseOrder])
     
     function finalizePurchase(){
       console.log(purchaseOrder);
       const db = getFirestore();
       const ordersCollection = collection(db, 'orders')
       addDoc( ordersCollection, purchaseOrder).then(({ id }) => setOrderId(id))
+      
       alert(`Su compra se generó con exito!!, el ID de su compra es: ${orderId}`)
+
+      updateStock(purchaseOrder)
       setPurchaseOrder({})
       clearAll()
+  }
+
+  function docDictionary(name){
+    let docName = ''
+    const nameSplitted = name.split(' ')
+
+    switch(nameSplitted[1]){
+      case 'Brasileno':
+        docName = 'Brasil';
+        break;
+      case 'Brasileño':
+        docName = 'Brazil';
+        break;
+      case 'Colombiano':
+        docName = 'Colombia';
+        break;
+      case 'Uruguayo':
+        docName = 'Uruguay';
+        break;
+      case 'Paraguayo':
+        docName = 'Paraguay';
+        break;
+      case 'Frances':
+        docName = 'Francia';
+        break;
+      case 'Peruano':
+        docName = 'Peru';
+        break;
+      case 'Mexicano':
+        docName = 'Mexico';
+        break;
+      case 'Venezolano':
+        docName = 'Venezuela';
+        break;
+      case 'Argentino':
+        docName = 'Argentina';
+        break;
+    }
+    return docName
+  }
+
+  function updateStock(purchaseOrder){
+    const db = getFirestore()
+    const itemsCollection = collection(db, "items")
+    
+    purchaseOrder.items.map((item)=>{
+       updateDoc(doc(itemsCollection, docDictionary(item.name)),{ stock: item.stock })
+    })
   }
   
   const addItem = (producto, quantity, stock, price, set) => {
@@ -78,6 +115,7 @@ export const ContextProvider = ({children}) => {
           ]);
         }
       }
+      console.log('Cart: ', cart);
     };
 
     const deleteItem = (id) => {
@@ -103,11 +141,8 @@ export const ContextProvider = ({children}) => {
     }
 
     const clearAll = () =>{ setCart([]); setCntProducto(0)}
-    console.log('Cart', cart);
 
     const setLoader = (setting) =>{ setLoading(setting); }
-
-    const setArray = (tag) =>{ setTag(tag) }
 
     return (
       <CartContext.Provider
@@ -121,7 +156,8 @@ export const ContextProvider = ({children}) => {
           clearAll,
           deleteItem,
           setLoader,
-          setArray,
+          setArrayCafe,
+          setArrayInfusion,
           generatePurchase
         }}
       >
