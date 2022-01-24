@@ -10,22 +10,25 @@ export const ContextProvider = ({children}) => {
     const [cntProducto, setCntProducto] = useState(0);
     const [purchaseOrder, setPurchaseOrder] = useState({})
     const [orderId, setOrderId] = useState()
+    const [category, setCategory] = useState()
 
     const [arrayCafe, setArrayCafe] = useState([]) 
     const [arrayInfusion, setArrayInfusion] = useState([])
+    const [arrayPastel, setArrayPastel] = useState([])
 
     useEffect(()=>{
-      
+      if( orderId !== undefined ){ 
+        alert(`Su compra se generó con exito!!, el ID de su compra es: ${orderId}`)
+        setOrderId(undefined)
+      }
       Object.values(purchaseOrder).length > 0 && finalizePurchase()
-    }, [purchaseOrder])
+    }, [purchaseOrder, orderId])
     
     function finalizePurchase(){
       console.log(purchaseOrder);
       const db = getFirestore();
       const ordersCollection = collection(db, 'orders')
       addDoc( ordersCollection, purchaseOrder).then(({ id }) => setOrderId(id))
-      
-      alert(`Su compra se generó con exito!!, el ID de su compra es: ${orderId}`)
 
       updateStock(purchaseOrder)
       setPurchaseOrder({})
@@ -35,6 +38,12 @@ export const ContextProvider = ({children}) => {
   function docDictionary(name){
     let docName = ''
     const nameSplitted = name.split(' ')
+
+    switch(nameSplitted[0]){
+      case 'Croissant':
+        docName = 'Croissant';
+        break;
+    }
 
     switch(nameSplitted[1]){
       case 'Brasileno':
@@ -92,13 +101,15 @@ export const ContextProvider = ({children}) => {
 
         } else {
           let name, foto;
-
+          if(category === 'Cafe' || category === undefined){
             name = arrayCafe.find((elm) => elm.productId === producto)?.title;
             foto = arrayCafe.find((elm) => elm.productId === producto)?.img;
-
-          if(name === undefined || foto === undefined ) {
+          }else if( category === 'Infusiones' ) {
             name = arrayInfusion.find((elm) => elm.productId === producto)?.title;
             foto = arrayInfusion.find((elm) => elm.productId === producto)?.img;
+          }else{
+            name = arrayPastel.find((elm) => elm.productId === producto)?.title;
+            foto = arrayPastel.find((elm) => elm.productId === producto)?.img;
           }
 
           setCart([
@@ -115,9 +126,9 @@ export const ContextProvider = ({children}) => {
           ]);
         }
       }
-      console.log('Cart: ', cart);
     };
-
+    console.log('Cart: ', cart);
+    
     const deleteItem = (id) => {
         console.log('Elimino: ', id);
 
@@ -156,8 +167,10 @@ export const ContextProvider = ({children}) => {
           clearAll,
           deleteItem,
           setLoader,
+          setCategory,
           setArrayCafe,
           setArrayInfusion,
+          setArrayPastel,
           generatePurchase
         }}
       >

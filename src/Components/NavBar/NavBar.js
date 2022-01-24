@@ -7,7 +7,7 @@ import { CartContext } from "../CartContext/CartContext";
 
 function NavBar(){
     const [itemsQty, setItemQty ] = useState(0)
-    const categorias = ['Café', 'Infusiones', 'Pasteleria'];
+    const categorias = ['Cafe', 'Infusiones', 'Pasteleria'];
     
     const { cntProducto } = useContext( CartContext )
     
@@ -23,7 +23,7 @@ function NavBar(){
                 categorias.map((categoria, index)=>{
                     return(
                         <div key={index} id={`${categorias[index]}`} className='link'>
-                            <a><Link to={`${categoria === 'Café' ? '/' : categoria }`}>{categoria}</Link></a>
+                            <a><Link to={ `/${categoria}` }>{categoria}</Link></a>
                         </div>
                     )
                 })

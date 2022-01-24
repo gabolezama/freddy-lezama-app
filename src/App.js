@@ -30,9 +30,7 @@ function App() {
         <FloatingButton/>
           <Routes>
             <Route exact path='/' element={ <Home/>}/>
-            <Route exact path='/Café' element={ <Home/>}/>
-            <Route exact path='/Infusiones' element={ <Infusiones/>}/>
-            <Route exact path='/Pasteleria' element={ <Pasteleria/>}/>
+            <Route exact path='/:categoria' element={ <Home/>}/>
             <Route exact path={`/ItemDetail/:country/:id/:rating/:price`} element={ <ItemDetailContainer/>}/>
             <Route exact path={`/cart`} element={ <Cart/>}/>
           </Routes>

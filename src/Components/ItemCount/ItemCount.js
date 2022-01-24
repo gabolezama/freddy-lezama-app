@@ -6,7 +6,7 @@ function ItemCount(props) {
 
   const { myId, stock, initial, onAdd} = props;
   
-  const [ counter, setCounter ] = useState(initial === undefined || initial === null? 0 : parseInt(initial))
+  const [ counter, setCounter ] = useState(initial > stock ? parseInt(stock) : parseInt(initial))
 
   const increase = ()=>{
     setCounter( counter >= stock? stock : counter + 1 )
