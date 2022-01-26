@@ -1,3 +1,6 @@
+# Información sobre la Aplicación
+Este es un proyecto personal que he realizado para la cursada de React. Es un sitio web realizado enteramente en react js y estilos de boostrasp. Su función es exhibir productos a potenciales clientes, segun categorías, descripciones y precios, con circuito completo de compra: inclueye un carrito, lista previa de la seleccion, modal de compras para pedir datos del comprador, generar la orden de compra,etc... todo esto implementando el consumo de la api de firestore de google quien es la que almacena toda la info que se renderiza en este e-commerce; por tanto la misma es modificable y editable desde firebase proporcionando un control confiable de la data.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
