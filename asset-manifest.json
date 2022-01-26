@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/freddy-lezama-app/static/css/main.9c1f06cf.chunk.css",
+    "main.js": "/freddy-lezama-app/static/js/main.b1eefe03.chunk.js",
+    "main.js.map": "/freddy-lezama-app/static/js/main.b1eefe03.chunk.js.map",
+    "runtime-main.js": "/freddy-lezama-app/static/js/runtime-main.da2c4d8b.js",
+    "runtime-main.js.map": "/freddy-lezama-app/static/js/runtime-main.da2c4d8b.js.map",
+    "static/js/2.c2962db4.chunk.js": "/freddy-lezama-app/static/js/2.c2962db4.chunk.js",
+    "static/js/2.c2962db4.chunk.js.map": "/freddy-lezama-app/static/js/2.c2962db4.chunk.js.map",
+    "static/js/3.3969aa83.chunk.js": "/freddy-lezama-app/static/js/3.3969aa83.chunk.js",
+    "static/js/3.3969aa83.chunk.js.map": "/freddy-lezama-app/static/js/3.3969aa83.chunk.js.map",
+    "index.html": "/freddy-lezama-app/index.html",
+    "static/css/main.9c1f06cf.chunk.css.map": "/freddy-lezama-app/static/css/main.9c1f06cf.chunk.css.map",
+    "static/js/2.c2962db4.chunk.js.LICENSE.txt": "/freddy-lezama-app/static/js/2.c2962db4.chunk.js.LICENSE.txt",
+    "static/media/anadir-al-carrito.218cdd96.png": "/freddy-lezama-app/static/media/anadir-al-carrito.218cdd96.png",
+    "static/media/cafe.77601a33.jpg": "/freddy-lezama-app/static/media/cafe.77601a33.jpg",
+    "static/media/coffee.359cfb87.png": "/freddy-lezama-app/static/media/coffee.359cfb87.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da2c4d8b.js",
+    "static/js/2.c2962db4.chunk.js",
+    "static/css/main.9c1f06cf.chunk.css",
+    "static/js/main.b1eefe03.chunk.js"
+  ]
+}
